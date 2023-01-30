@@ -6,7 +6,7 @@ function animate() {
   box.rotation.x += 0.01;
 	box.rotation.y += 0.01;
 
-  mrenderer.render( menu, mcamera);
+  menuRenderer.render( menu, menuCamera);
   renderer.render( world, camera);
 };
 animate();

@@ -1,27 +1,28 @@
 createCanvas('menuCanvas');
+scene({name: 'menu'});
+camera({name: 'menuCamera', type: 'orthographic'});
+renderer({name: 'menuRenderer', canvas: menuCanvas});
 
+//______________________________________________________________________________
 
-createScene('menu');
-createCamera({name: 'mcamera', type: 'orthographic'});
-createRenderer('mrenderer', {canvas: menuCanvas});
+geometry({name: 'sphere', type: 'sphere', radius: 5});
 
-createGeometry('capsule', 'sphere', {radius: 4});
-createMaterial('green', 'phong', {color: 'lime'});
-createMaterial('transparentGreen', 'basic', {color: 'lime', transparent: true, opacity: 0.5});
+material('green', 'standard', {color: 0xCA6680});
+material('red', 'standard', {color: 0xFFE1C6});
+material('yellow', 'standard', {color: 0x4F000B});
+material('orange', 'standard', {color: 0xFF87AB});
+material('blue', 'standard', {color: 0x6D435A});
 
+object({
+  name: 'button', scene: 'menu', geometry: sphere,
+  material: [green, red, yellow, orange, blue],
+  x: [-40, -20, 0, 20, 40], y: 40, z: -1
+});
 
-createObject('button0', 'menu', {geometry: capsule, material: green, x: -30, y:-40, rz: 90});
-createObject('button1', 'menu', {geometry: capsule, material: green, x: -20, y:-40, rz: 90});
-createObject('button2', 'menu', {geometry: capsule, material: green, x: -10, y:-40, rz: 90});
-createObject('button3', 'menu', {geometry: capsule, material: green, x: 0, y:-40, rz: 90});
-createObject('button4', 'menu', {geometry: capsule, material: green, x: 10, y:-40, rz: 90});
-createObject('button5', 'menu', {geometry: capsule, material: green, x: 20, y:-40, rz: 90});
-createObject('button6', 'menu', {geometry: capsule, material: green, x: 30, y:-40, rz: 90});
-
-const light1 = new THREE.PointLight( 'white', 1, 100 );
-light1.position.set( 5, 5, 5 );
+const light1 = new THREE.PointLight( 'white', 5, 100 );
+light1.position.set( 0, 0, 50 );
 menu.add( light1 );
 
 const objects = [];
-objects.push(button0, button1, button2, button3, button4, button5, button6);
+objects.push(button);
 createControls('controls', 'drag', {objects: objects})
