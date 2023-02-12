@@ -1,28 +1,53 @@
-createCanvas('menuCanvas');
-scene({name: 'menu'});
-camera({name: 'menuCamera', type: 'orthographic'});
-renderer({name: 'menuRenderer', canvas: menuCanvas});
+init({name: 'menu', type: 'orthographic'});
 
-//______________________________________________________________________________
+new THREE.Interaction(menu_renderer, menu, menu_camera);
+new THREE.Interaction(menu_renderer, world, world_camera);
 
-geometry({name: 'sphere', type: 'sphere', radius: 5});
+light({name: 'light1', type: 'point', scene: 'menu', color: 'white', y: 40, z: 50})
 
-material('green', 'standard', {color: 0xCA6680});
-material('red', 'standard', {color: 0xFFE1C6});
-material('yellow', 'standard', {color: 0x4F000B});
-material('orange', 'standard', {color: 0xFF87AB});
-material('blue', 'standard', {color: 0x6D435A});
-
-object({
-  name: 'button', scene: 'menu', geometry: sphere,
-  material: [green, red, yellow, orange, blue],
-  x: [-40, -20, 0, 20, 40], y: 40, z: -1
+meshes({
+  group_name: 'menu',
+  name: ['button0', 'button1', 'button2', 'button3'],
+  scene: menu,
+  geometry: sphere,
+  material: skin,
+  x: [-24, -8, 8, 24],
+  y: 44,
+  z: -1,
+  sx: 4, sy: 4, sz:4,
+  cursor: 'pointer',
+  function: [
+    function (object) { object.on('mouseover', (ev) => { new TWEEN.Tween(world_camera.position).to({x: 0}, 500).start() }) },
+    function (object) { object.on('mouseover', (ev) => { new TWEEN.Tween(world_camera.position).to({x: 10}, 500).start() }) },
+    function (object) { object.on('mouseover', (ev) => { new TWEEN.Tween(world_camera.position).to({x: 20}, 500).start() }) },
+    function (object) { object.on('mouseover', (ev) => { new TWEEN.Tween(world_camera.position).to({x: 30}, 500).start() }) },
+  ],
+  group_function: function (name) {
+    name.on('mouseover', (ev) => { name.material = skin_transparent });
+    name.on('mouseout', (ev) => { name.material = skin })
+  }
 });
 
-const light1 = new THREE.PointLight( 'white', 5, 100 );
-light1.position.set( 0, 0, 50 );
-menu.add( light1 );
-
-const objects = [];
-objects.push(button);
-createControls('controls', 'drag', {objects: objects})
+// controls({name: 'drag_controls', type: 'drag', camera: menu_camera, renderer: menu_renderer, enabled: false, objects: [menu.button0, menu.button1, menu.button2, menu.button3]});
+// controls({name: 'orbit_controls', type: 'orbit', camera: world_camera, renderer: menu_renderer, enabled: false});
+//
+// meshes({
+//   group_name: 'controls_menu',
+//   name: ['drag_toggle', 'orbit_toggle'],
+//   scene: menu,
+//   geometry: sphere,
+//   material: skin,
+//   x: -80,
+//   y: [40, 30],
+//   z: -1,
+//   sx: 3, sy: 3, sz: 3,
+//   cursor: 'pointer',
+//   function: [
+//     function (name) { name.on('click', (ev) => { drag_controls.enabled = !drag_controls.enabled; name.material = 'blue' }) },
+//     function (name) { name.on('click', (ev) => { orbit_controls.enabled = !orbit_controls.enabled }) }
+//   ],
+//   group_function: function (name) {
+//     name.on('mouseover', (ev) => { name.material = skin_transparent }),
+//     name.on('mouseout', (ev) => { name.material = skin })
+//   }
+// });
