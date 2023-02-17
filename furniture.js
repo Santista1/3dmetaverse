@@ -56,14 +56,16 @@ function painting (p = {}) {
     sx: p.sx || 4,
     sy: p.sy || 3,
     sz: p.sz || 0.01,
-    function: p.function
+    rx: p.rx || 0,
+    ry: p.ry || 0,
+    rz: p.rz || 0,
+    function: p.function || undefined
   });
 
 };
 
 function chair (p = {}) {
 
-  const legx = p.width / 2 + (p.x || 0);
   const frontlegz = p.depth / 2 + (p.z || 0);
   const backlegz = -p.depth / 2 + (p.z || 0);
   const y = p.y || 0;
@@ -74,7 +76,7 @@ function chair (p = {}) {
     scene: p.scene,
     geometry: p.geometry,
     material: p.material,
-    x: [legx, -legx, legx, -legx, p.x || 0, p.x || 0],
+    x: [p.width / 2 + (p.x || 0), -p.width / 2 + (p.x || 0), p.width / 2 + (p.x || 0), -p.width / 2 + (p.x || 0), p.x || 0, p.x || 0],
     y: [y, y,  p.height / 4 + y + p.thickness / 2, p.height / 4 + y + p.thickness / 2, p.height / 4 + y, p.height / 2 + y + p.thickness],
     z: [frontlegz, frontlegz, backlegz, backlegz, p.z || 0, backlegz],
     sx: [p.thickness, p.thickness, p.thickness, p.thickness, p.width + p.thickness, p.width],

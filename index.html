@@ -3,42 +3,38 @@
 
 <head>
 
-    <title>3dmetaverse</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/Santista1/3dworld/master/favicon.ico">
-    <style>
-        body {
-            margin: 0
-        }
-    </style>
+  <title>3dmetaverse</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/Santista1/3dworld/master/favicon.ico">
+  <style> body {margin: 0} </style>
 
 </head>
 
 <body>
 
-    <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+  <!-- gun.js -->
+  <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+  <!-- tween.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+  <!-- three.js -->
+  <script src="https://unpkg.com/three@0.147.0/build/three.js"></script>
+  <script src="https://unpkg.com/three@0.147.0/examples/js/controls/DragControls.js"></script>
+  <script src="https://unpkg.com/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://unpkg.com/three@0.147.0/examples/js/controls/FirstPersonControls.js"></script>
+  <script src="https://unpkg.com/three@0.147.0/examples/js/geometries/RoundedBoxGeometry.js"></script>
+  <script src="https://unpkg.com/three@0.147.0/examples/js/geometries/TeapotGeometry.js"></script>
+  <script src="https://unpkg.com/three@0.147.0/examples/js/renderers/CSS3DRenderer.js"></script>
+  <!-- feather.js -->
+  <!-- <script crossorigin src="https://unpkg.com/@terra-money/feather.js/dist/bundle.js"></script> -->
 
-    <script src="https://unpkg.com/three@0.147.0/build/three.js"></script>
-    <!-- Controls -->
-    <script src="https://unpkg.com/three@0.147.0/examples/js/controls/DragControls.js"></script>
-    <script src="https://unpkg.com/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://unpkg.com/three@0.147.0/examples/js/controls/FirstPersonControls.js"></script>
+  <script src="https://rawcdn.githack.com/Santista1/3dworld/20a2836c92fe435c78b52e979e28accfb7232fad/three.interaction.js"></script>
+  <script crossorigin src="https://unpkg.com/@terra-money/terra.js/dist/bundle.js"></script>
+  <script src="./creators.js"></script>
+  <script src="./furniture.js"></script>
 
-    <script src="https://unpkg.com/three@0.147.0/examples/js/geometries/RoundedBoxGeometry.js"></script>
-    <script src="https://unpkg.com/three@0.147.0/examples/js/geometries/TeapotGeometry.js"></script>
-
-    <!-- <script src="https://unpkg.com/three-csg@1.0.0/index.js"></script> -->
-
-    <script src="./three.interaction.js"></script>
-    <script src="./creators.js"></script>
-    <script src="./furniture.js"></script>
-
-    <script src="./shared.js"></script>
-    <script src="./world.js"></script>
-    <script src="./menu.js"></script>
-    <script src="./render.js"></script>
+  <script src="./office.js"></script>
+  <script src="./alliance.js"></script>
 
 </body>
 

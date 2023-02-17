@@ -1,17 +1,6 @@
-function canvas(p = {}) {
-
-  this[p.name] = document.createElement("canvas");
-  this[p.name].width = p.width || window.innerWidth;
-  this[p.name].height = p.height || window.innerHeight;
-  this[p.name].style.position = "absolute";
-  document.body.appendChild(this[p.name]);
-
-};
-
 function scene({name = 'world', background = null}) {
 
   this[name] = new THREE.Scene();
-
   this[name].background = background;
 
 };
@@ -57,8 +46,12 @@ function renderer(p = {}) {
 
   if (!p.antialias) { p.antialias = true };
   if (!p.alpha) {p.alpha = true };
-  if (!p.canvas) {canvas({name: p.name}); p.canvas = this[p.name];};
   this[p.name] = new THREE.WebGLRenderer(p);
+  this[p.name].setSize(window.innerWidth, window.innerHeight);
+  this[p.name].domElement.style.position = 'absolute';
+  this[p.name].domElement.style.zIndex = 1;
+  this[p.name].domElement.style.top = 0;
+  document.body.appendChild(this[p.name].domElement);
 
 };
 
@@ -162,7 +155,7 @@ function meshes(p = {}) {
 
     mesh.visible = p.visible ? p.visible[i % p.visible.length] : true;
 
-    if (p.function) { p.function[i % p.function.length]( mesh ) };
+    if (typeof p.function !== 'undefined') { p.function[i % p.function.length]( mesh ) };
 
     if (p.group_function) { p.group_function[0]( mesh ) };
 
