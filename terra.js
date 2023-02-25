@@ -34,26 +34,14 @@ terra.onload = function () { (async () => {
     return obj.status == 'BOND_STATUS_BONDED';
   });
 
+  classic_validators_list.sort(function(a, b) { return b.tokens.toString() - a.tokens.toString(); });
 
-    classic_validators_list.sort(function(a, b) { return b.tokens.toString() - a.tokens.toString(); });
-      console.log(classic_validators_list);
+  var classic_validators_moniker=[];
+  for( var i = 0; i < classic_validators_list.length; i++ ){ classic_validators_moniker.push( classic_validators_list[i].description.moniker ) };
 
-      var classic_validators_moniker=[];
-      for(var i = 0; i < classic_validators_list.length; i++ ){ classic_validators_moniker.push( classic_validators_list[i].description.moniker ) };
-
-      console.log(classic_validators_moniker);
+  console.log(classic_validators_moniker);
 
 })()};
-
-//
-
-//
-//   var classic_validators_tokens=[];
-//   for(var i = 0; i < classic_validators[0].length; i++ ){ classic_validators_tokens.push( classic_validators[0][i].tokens.toString() ) };
-//
-//   console.log(classic_validators_tokens);
-//
-// console.log( classic_validators_moniker );
 
 feather.onload = function () { (async () => {
 

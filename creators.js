@@ -1,7 +1,7 @@
-function scene({name = 'world', background = null}) {
+function scene(p = {}) {
 
-  this[name] = new THREE.Scene();
-  this[name].background = background;
+  this[p.name] = new THREE.Scene();
+  if (p.background) {this[p.name].background = p.background};
 
 };
 
